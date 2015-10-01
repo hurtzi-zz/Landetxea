@@ -54,7 +54,7 @@ public class AddActivity extends JPanel implements Serializable{
 	        return act;
 	    }
 	}
-	
+	//ola222222222
 	/**
 	 * Create the panel.
 	 */
