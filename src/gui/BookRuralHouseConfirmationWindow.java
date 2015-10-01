@@ -84,10 +84,10 @@ public class BookRuralHouseConfirmationWindow extends JFrame implements Serializ
     jTextField3.setBounds(new Rectangle(180, 140, 115, 25));
     jTextField3.setEditable(false);
 
-    jTextField3.setText(Float.toString(book.getPrice()) + " €");
+    jTextField3.setText(Float.toString(book.getPrice()) + " \\u20ac");
     jTextField4.setBounds(new Rectangle(180, 175, 115, 25));
     jTextField4.setEditable(false);
-    jTextField4.setText(Float.toString(book.getPrice()*(float)0.2) + " €");
+    jTextField4.setText(Float.toString(book.getPrice()*(float)0.2) + " \\u20ac");
     this.getContentPane().add(jTextField4, null);
     this.getContentPane().add(jTextField3, null);
     this.getContentPane().add(jLabel5, null);

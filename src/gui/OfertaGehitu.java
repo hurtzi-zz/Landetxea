@@ -234,7 +234,7 @@ public class OfertaGehitu extends JFrame implements Serializable{
 				float prezioa = Float.parseFloat(textField.getText());
 				if (prezioa == 0) {
 					lblMezu.setForeground(Color.RED);
-					lblMezu.setText("Prezioa aldatu (Prezio minimoa 1€)");
+					lblMezu.setText("Prezioa aldatu (Prezio minimoa 1\\u20ac)");
 
 				} else if (d2.before(d1)) {
 					System.out.println("Gaizki datak");

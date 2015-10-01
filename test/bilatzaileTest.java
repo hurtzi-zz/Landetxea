@@ -1,7 +1,5 @@
-
 import junit.framework.TestCase;
 import businessLogic.*;
-import static com.sun.xml.internal.ws.dump.LoggingDumpTube.Position.Before;
 import java.rmi.RemoteException;
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -25,9 +23,7 @@ public class bilatzaileTest extends TestCase{
             //ejekututauko den testa baino lehen nahi duzuna (hasieratu bista kasu honetan)
 	    protected void setUp() throws Exception {
 	        super.setUp();
-	        // Creating Contact model
 	        facade = new FacadeImplementation();
-		// Creating Contact view
 	    
 	    }
             
@@ -40,8 +36,9 @@ public class bilatzaileTest extends TestCase{
             
             //BILATZAILEAREN-aren proba kasuak
 	    public void testCreateGui1() throws InterruptedException {
-	    	try { //(1), (3), (5) eta (7) kasuak. Hau da, ONDO daudenak.
-	    		assertEquals(true, facade.SarchByCity("asd3@msn.com"));
+	    	try { //.......
+                    System.out.println("urtzi: ");
+	    		assertEquals(true, facade.SarchByCity("asdm"));
 			} catch (RemoteException e) {
 				e.printStackTrace();
 			} catch (Exception e) {
