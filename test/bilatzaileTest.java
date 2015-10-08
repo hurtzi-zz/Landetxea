@@ -1,6 +1,9 @@
 import junit.framework.TestCase;
 import businessLogic.*;
+import domain.RuralHouse;
 import java.rmi.RemoteException;
+import java.util.Iterator;
+import java.util.Vector;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -38,6 +41,7 @@ public class bilatzaileTest extends TestCase{
 	    public void testCreateGui1() throws InterruptedException {
 	    	try { //.......
                     System.out.println("urtzi: ");
+                    Vector<RuralHouse> buelta  =facade.SarchByCity("asdm");
 	    		assertEquals(true, facade.SarchByCity("asdm"));
 			} catch (RemoteException e) {
 				e.printStackTrace();
@@ -46,6 +50,42 @@ public class bilatzaileTest extends TestCase{
 			}   
 	    }
 	   
+            
+            public void vectorImp(Vector<RuralHouse> buelta){ 
+                
+                System.out.println("---------------------------------------");
+		int i = 1;
+		if (buelta.size() == 0) {
+			System.out.println("erantzuna hutsik");
+		} else {
+			System.out.println("etxeak: ");
+			Iterator<RuralHouse> irt = buelta.iterator();
+			while (irt.hasNext()) {
+				System.out.print("(" + i + ") ");
+				System.out.print(irt.next().getHouseNumber()+"\n");
+				i++;
+			}
+		}
+		System.out.println("--------------------------------------");
+	
+                
+               
+	    }
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
 }
 
 	 
