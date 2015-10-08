@@ -4,6 +4,11 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/D:/Proyectos/Java/Landetxea/src/gui/AddRuralHouse.java</file>
+            <file>file:/D:/Proyectos/Java/Landetxea/src/businessLogic/FacadeImplementation.java</file>
+            <file>file:/D:/Proyectos/Java/Landetxea/src/dataAccess/DataAccessCommon.java</file>
+            <file>file:/D:/Proyectos/Java/Landetxea/src/gui/SearchRuralHouse.java</file>
+            <file>file:/D:/Proyectos/Java/Landetxea/test/bilatzaileTest.java</file>
+            <file>file:/D:/Proyectos/Java/Landetxea/src/businessLogic/ApplicationFacadeInterface.java</file>
         </group>
     </open-files>
 </project-private>
