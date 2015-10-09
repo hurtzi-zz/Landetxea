@@ -202,7 +202,7 @@ public class FindOffers extends JFrame implements Serializable{
 								comboBox.setVisible(true);
 								Vector<String>offr= new Vector<String>();
 								for (int i=0; i< ofertak.size(); i++){
-									offr.add(ofertak.elementAt(i).getRuralHouse().getCity()+" "+ofertak.elementAt(i).getRuralHouse().getDescription()+" "+ofertak.elementAt(i).getPrice()+"\\u20ac");
+									offr.add(ofertak.elementAt(i).getRuralHouse().getCity()+" "+ofertak.elementAt(i).getRuralHouse().getDescription()+" "+ofertak.elementAt(i).getPrice()+"€¤");
 								}
 								
 								

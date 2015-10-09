@@ -60,19 +60,18 @@ public class SearchCommentPanel extends JPanel implements Serializable{
 				panel1.setLayout(null);
 				
 			} else if (lekuak == 2) {
-				JPanel panel1 = new CommentPanel(comments, pag);
-				panel1.setBackground(Color.WHITE);
-				panel1.setBounds(12, 2, 542, 90);
-				add(panel1);
-				panel1.setLayout(null);
-
 				JPanel panel2 = new CommentPanel(comments, pag + 1);
 				panel2.setLayout(null);
 				panel2.setBackground(Color.WHITE);
 				panel2.setBounds(12, 102, 542, 90);
 				add(panel2);
 
-
+				JPanel panel3 = new CommentPanel(comments, pag + 2);
+				panel3.setLayout(null);
+				panel3.setBackground(Color.WHITE);
+				panel3.setBounds(12, 202, 542, 90);
+				add(panel3);
+				
 			} else if (lekuak == 3) {
 				JPanel panel1 = new CommentPanel(comments, pag);
 				panel1.setBackground(Color.WHITE);
@@ -107,7 +106,7 @@ public class SearchCommentPanel extends JPanel implements Serializable{
 					}
 				});
 			}
-			
+
 			JButton btnNext = new JButton("Next");
 			btnNext.setBounds(382, 320, 173, 37);
 			add(btnNext);

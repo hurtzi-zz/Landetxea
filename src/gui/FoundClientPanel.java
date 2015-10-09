@@ -37,20 +37,24 @@ public class FoundClientPanel extends JPanel implements Serializable{
 		izena.setText(h.get(ind).getName());
 
 		JLabel lblRural = new JLabel("Izena:");
-		lblRural.setBounds(10, 36, 46, 14);
+		lblRural.setBounds(10, 11, 110, 14);
 		add(lblRural);
 
 		JLabel abizen = new JLabel("");
-		abizen.setBounds(106, 79, 68, 14);
+		abizen.setBounds(92, 11, 29, 14);
 		add(abizen);
 		abizen.setText(h.get(ind).getAbizena());
 
 		JLabel label = new JLabel("Abizena:");
-		label.setBounds(10, 79, 93, 14);
+		label.setBounds(10, 36, 93, 14);
 		add(label);
 
+		JLabel lblPrice = new JLabel("Login:");
+		lblPrice.setBounds(10, 86, 85, 14);
+		add(lblPrice);
+
 		JLabel searchPrice = new JLabel("");
-		searchPrice.setBounds(106, 27, 68, 23);
+		searchPrice.setBounds(123, 60, 68, 23);
 		add(searchPrice);
 		searchPrice.setBackground(Color.WHITE);
 		searchPrice.setText(h.get(ind).getLogin());
@@ -85,7 +89,7 @@ public class FoundClientPanel extends JPanel implements Serializable{
 				
 			}
 		});
-		btnDelete.setBounds(304, 32, 93, 42);
+		btnDelete.setBounds(299, 7, 89, 23);
 		add(btnDelete);
 		
 		

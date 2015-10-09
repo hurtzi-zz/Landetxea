@@ -54,7 +54,7 @@ public class AddActivity extends JPanel implements Serializable{
 	        return act;
 	    }
 	}
-	//ola222222222
+	
 	/**
 	 * Create the panel.
 	 */
@@ -94,6 +94,7 @@ public class AddActivity extends JPanel implements Serializable{
 		
 		comboBox.setBounds(160, 200, 150, 25);
 		add(comboBox);
+		comboBox.setVisible(false);
 		try{
 			Vector<Activity> ownList = StartWindow.facadeInterface.getOwnerActivities(owner);
 			if (ownList == null || ownList.isEmpty()){
@@ -108,6 +109,7 @@ public class AddActivity extends JPanel implements Serializable{
 					aTest = it.next();
 					if (!houseList.contains(aTest)){
 						comboBox.addItem(new ComboItem(aTest.getName(), aTest));
+						comboBox.setVisible(true);
 					}
 				}
 			}

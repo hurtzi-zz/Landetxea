@@ -107,7 +107,12 @@ public class AddRuralHouse extends JPanel implements Serializable{
 					System.out.println("bai");
 					try {
 						System.out.println(owner.getLogin()+"Hau da logina");
+				//		Vector<RuralHouse> rr = StartWindow.facadeInterface.ownerBektoreaBueltatu(owner.getLogin());
+						
+					//	System.out.println(rr + "Hau da bektorea");
+					//	owner.setRuralHouses(rr);
 						Owner bi = StartWindow.facadeInterface.ownerBuelta(owner.getLogin());
+					//	bi.addRuralHouse(gorde);
 						Boolean isOk = StartWindow.facadeInterface.saveRuralHouse(Integer.parseInt(textZenbakia.getText()), textHiria.getText(), textDeskribapena.getText(), bi);
 						if (isOk){
 							lblOharrak.setText("Landetxea ondo eratu da!");

@@ -172,9 +172,9 @@ public class FoundPanelClient extends JPanel implements Serializable{
 			btnEdit.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
 					try {
-						ApplicationFacadeInterface facades = StartWindow.getBusinessLogic();
-						Owner o = facades.clienToOwner(c);
-						StartWindow.setEditRH(o, h.get(ind));
+						ApplicationFacadeInterface facades = StartWindow
+								.getBusinessLogic();
+						StartWindow.setEditRH((Owner) c, h.get(ind));
 					} catch (Exception e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
