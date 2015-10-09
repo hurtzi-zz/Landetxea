@@ -137,23 +137,94 @@ public class DataAccessCommon implements DataAccessInterface, Serializable {
         return true;
     }
 
+    private static boolean isNumber(String bankAccount) {
+        if (bankAccount == null || bankAccount.isEmpty()) {
+            return false;
+        }
+        int i = 0;
+        for (; i < bankAccount.length(); i++) {
+            if (!Character.isDigit(bankAccount.charAt(i))) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private static boolean gidoiak(String bankAccount) {
+    System.out.println("000000000000000000000000000000000000000000");
+        if (bankAccount == null || bankAccount.isEmpty()) {
+            System.out.println("1");
+            return false;
+        } else if (bankAccount.length() != 23) {
+            return false;
+        }
+        System.out.println("4..9..12--> "+bankAccount.charAt(4)+bankAccount.charAt(9)+bankAccount.charAt(12));
+        if (bankAccount.charAt(4) == '-' && bankAccount.charAt(9) == '-' && bankAccount.charAt(12) == '-') {
+        int i = 0;
+        for (; i < 4; i++) {
+            if (!Character.isDigit(bankAccount.charAt(i))) {
+                return false;
+            }
+        }
+        int k = 5;
+        for (; k < 9; k++) {
+            if (!Character.isDigit(bankAccount.charAt(k))) {
+                return false;
+            }
+        }
+        int j = 10;
+        for (; j < 12; j++) {
+            if (!Character.isDigit(bankAccount.charAt(j))) {
+                return false;
+            }
+        }
+        int h = 13;
+        for (; h < bankAccount.length(); h++) {
+            if (!Character.isDigit(bankAccount.charAt(h))) {
+                return false;
+            }
+        }
+        return true;
+        } else {
+            System.out.println("4");
+            return false;
+        }
+    }
+
     public boolean createOwner(Integer tlfn, String bankAccount, String name, String abizena, String login, String password) {
         String x = Integer.toString(tlfn);
-        System.out.println("tlfn: " + tlfn);
+        System.out.println("bankAccount: " + bankAccount);
         if (x.length() != 9) {
+            System.out.println("-0-");
             return false;
-        } else if (x.contains(".")){
+        }  if (bankAccount.matches("^[A-Za-z]+$")) {
+            System.out.println("-1-");
             return false;
-        }else if (x.contains("-")||x.contains("+")||x.contains("/")||x.contains("*")){
+        }  if (x.contains("-") || x.contains("+") || x.contains("/") || x.contains("*") || x.contains(".")) {
+            System.out.println("-2-");
             return false;
-        }  else if (login.matches("^[A-Za-z]+$")){
+        }  if (x.matches("^[A-Za-z]+$")) {
+            System.out.println("-3-");
             return false;
-        }else {
+        }  if (bankAccount.contains("-")) {
+            System.out.println("-gido-");
+            if (gidoiak(bankAccount)==false) {
+                System.out.println("----------------------------------");
+                return false;
+            }
+        }  if (!bankAccount.contains("-") && bankAccount.length() != 20) {
+            System.out.println("-4-");
+            return false;
+        }  if (!bankAccount.contains("-") && !isNumber(bankAccount)) {
+            System.out.println("-5-");
+            return false;
+        } 
+            System.out.println("-ondo-");
             Owner berria = new Owner(tlfn, bankAccount, null, name, abizena, login, password, true, new Vector<RuralHouse>());
             db.store(berria);
             db.commit();
             return true;
-        }
+        
     }
 
     public boolean createAdmin(String login, String pass, Vector<Owner> ow, Vector<Client> cl) {
@@ -165,7 +236,7 @@ public class DataAccessCommon implements DataAccessInterface, Serializable {
     }
 
     public Boolean saveRuralHouse(Integer ze, String hi, String de, Owner o) {
-		// db.delete(o);
+        // db.delete(o);
         // db.commit();
         // // Owner berria = AddRuralHouse.owner;
         // // ImpgetAllRuralHouses(getAllRuralHouses());
@@ -303,7 +374,7 @@ public class DataAccessCommon implements DataAccessInterface, Serializable {
     }
 
     public boolean saveOffer(RuralHouse rh, Date d1, Date d2, Float prezioa) {
-		// db.delete(rh);
+        // db.delete(rh);
         // db.commit();
         Offer oferta = new Offer(rh, d1, d2, prezioa);
         rh.addOffer(oferta);
@@ -404,7 +475,7 @@ public class DataAccessCommon implements DataAccessInterface, Serializable {
 
         try {
 
-			// if (c.isDatabaseLocal()==false) openObjectContainer();
+            // if (c.isDatabaseLocal()==false) openObjectContainer();
             @SuppressWarnings("null")
             RuralHouse proto = new RuralHouse((Integer) null, null, null, null);
             // System.out.println(.getOwner() + ruralHouse.getCity());
@@ -412,7 +483,7 @@ public class DataAccessCommon implements DataAccessInterface, Serializable {
             ObjectSet<RuralHouse> result = db.queryByExample(proto);
             RuralHouse rh = result.next();
             Offer o = rh.createOffer(firstDay, lastDay, price);
-			// db.store(theDB4oManagerAux); // To store the new value for
+            // db.store(theDB4oManagerAux); // To store the new value for
             // offerNumber
             // db.store(o);
             // db.commit();
@@ -436,7 +507,7 @@ public class DataAccessCommon implements DataAccessInterface, Serializable {
 
         try {
 
-			// if (c.isDatabaseLocal()==false) openObjectContainer();
+            // if (c.isDatabaseLocal()==false) openObjectContainer();
             RuralHouse proto = new RuralHouse(ruralHouse.getHouseNumber(),
                     null, ruralHouse.getDescription(), ruralHouse.getCity());
             ObjectSet<RuralHouse> result = db.queryByExample(proto);
@@ -472,7 +543,7 @@ public class DataAccessCommon implements DataAccessInterface, Serializable {
      */
     public Vector<Owner> getOwners() {
 
-		// if (c.isDatabaseLocal()==false) openObjectContainer();
+        // if (c.isDatabaseLocal()==false) openObjectContainer();
         try {
             Owner proto = new Owner(null, null, null, null, null, null, null,
                     false, null);
@@ -615,7 +686,7 @@ public class DataAccessCommon implements DataAccessInterface, Serializable {
 
     public Vector<RuralHouse> getAllRuralHouses() {
 
-		// if (c.isDatabaseLocal()==false) openObjectContainer();
+        // if (c.isDatabaseLocal()==false) openObjectContainer();
         try {
             RuralHouse proto = new RuralHouse(0, null, null, null);
             ObjectSet<RuralHouse> result = db.queryByExample(proto);
@@ -648,7 +719,7 @@ public class DataAccessCommon implements DataAccessInterface, Serializable {
     }
 
     public void close() {
-		// System.out.print("itxi baino lehen=");
+        // System.out.print("itxi baino lehen=");
         // Owner berria = AddRuralHouse.owner;
         // inprimatuEtxeakOwner(berria);
         db.close();
@@ -659,7 +730,7 @@ public class DataAccessCommon implements DataAccessInterface, Serializable {
         return "bookingNumber=" + bookingNumber + " offerNumber=" + offerNumber;
     }
 
-	// public void updateOwner(Owner del, Owner add) throws RemoteException{
+    // public void updateOwner(Owner del, Owner add) throws RemoteException{
     // // db.delete(del);
     // db.store(add);
     // db.commit();
@@ -781,7 +852,7 @@ public class DataAccessCommon implements DataAccessInterface, Serializable {
         }
     }
 
-	// 33333333333
+    // 33333333333
     public Boolean RuralHouseRefactorComment(RuralHouse rh) {
 
         System.out.println("getHouseNumber: " + rh.getHouseNumber());
@@ -935,7 +1006,7 @@ public class DataAccessCommon implements DataAccessInterface, Serializable {
     }
 
     public Boolean deleteCom(RuralHouse rh, int i) {
-		// RuralHouse rhn = (RuralHouse) db.queryByExample(new
+        // RuralHouse rhn = (RuralHouse) db.queryByExample(new
         // RuralHouse(rh.getHouseNumber(), null, null, null)).next();
         // System.out.println("botua:" +rhn.getComments().get(i).getBotua());
         // rhn.getComments().remove(i);
@@ -1113,7 +1184,7 @@ public class DataAccessCommon implements DataAccessInterface, Serializable {
 
     public Boolean deleteOferta(RuralHouse rh, Offer o) {
         System.out.println(rh.getOffer().size());
-		// RuralHouse galderaRH = new RuralHouse(rh.getHouseNumber(), null,
+        // RuralHouse galderaRH = new RuralHouse(rh.getHouseNumber(), null,
         // null,null);
         // Offer galderaOf = new Offer(null, o.getFirstDay(), null, 0);
         try {
@@ -1198,7 +1269,7 @@ public class DataAccessCommon implements DataAccessInterface, Serializable {
 
     public Vector<Client> getClients() {
 
-		// if (c.isDatabaseLocal()==false) openObjectContainer();
+        // if (c.isDatabaseLocal()==false) openObjectContainer();
         try {
             Client proto = new Owner(null, null, null, null, null, null, null,
                     false, null);

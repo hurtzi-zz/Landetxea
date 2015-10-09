@@ -57,7 +57,7 @@ public class telefonoTest extends TestCase {
             facade.setDataAccess(new DataAccessLocal());
             boolean buelta = facade.createOwner(123456789, "202149955487", "Owner", "Altuna", "owner", "000");
             facade.close();
-            assertEquals(false, buelta);
+            assertEquals(true, buelta);
         } catch (RemoteException e) {
             e.printStackTrace();
         } catch (Exception e) {
@@ -81,7 +81,9 @@ public class telefonoTest extends TestCase {
             e.printStackTrace();
         }
     }
+
     //(3) 9 digitu baino gutxiago
+
     public void testCreateGui3() throws InterruptedException {
         try {
             facade.setDataAccess(new DataAccessLocal());
@@ -94,12 +96,12 @@ public class telefonoTest extends TestCase {
             e.printStackTrace();
         }
     }
-    
+
     //(5) - (7) karakter berez (gidoiak, sinboloak...)
     public void testCreateGui4() throws InterruptedException {
         try {
             facade.setDataAccess(new DataAccessLocal());
-            boolean buelta = facade.createOwner(98765432-1, "202149955487", "Owner", "Altuna", "owner", "000");
+            boolean buelta = facade.createOwner(98765432 - 1, "202149955487", "Owner", "Altuna", "owner", "000");
             facade.close();
             assertEquals(false, buelta);
         } catch (RemoteException e) {
@@ -108,7 +110,7 @@ public class telefonoTest extends TestCase {
             e.printStackTrace();
         }
     }
-    
+
     //(9) digitu negatiboa 
     public void testCreateGui5() throws InterruptedException {
         try {
@@ -122,9 +124,7 @@ public class telefonoTest extends TestCase {
             e.printStackTrace();
         }
     }
- 
-    
-    
+
     /*
      * BESTE
      */
