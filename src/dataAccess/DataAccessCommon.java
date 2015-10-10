@@ -151,80 +151,74 @@ public class DataAccessCommon implements DataAccessInterface, Serializable {
     }
 
     private static boolean gidoiak(String bankAccount) {
-    System.out.println("000000000000000000000000000000000000000000");
         if (bankAccount == null || bankAccount.isEmpty()) {
             System.out.println("1");
             return false;
         } else if (bankAccount.length() != 23) {
             return false;
         }
-        System.out.println("4..9..12--> "+bankAccount.charAt(4)+bankAccount.charAt(9)+bankAccount.charAt(12));
+        System.out.println("4..9..12--> " + bankAccount.charAt(4) + bankAccount.charAt(9) + bankAccount.charAt(12));
         if (bankAccount.charAt(4) == '-' && bankAccount.charAt(9) == '-' && bankAccount.charAt(12) == '-') {
-        int i = 0;
-        for (; i < 4; i++) {
-            if (!Character.isDigit(bankAccount.charAt(i))) {
-                return false;
+            int i = 0;
+            for (; i < 4; i++) {
+                if (!Character.isDigit(bankAccount.charAt(i))) {
+                    return false;
+                }
             }
-        }
-        int k = 5;
-        for (; k < 9; k++) {
-            if (!Character.isDigit(bankAccount.charAt(k))) {
-                return false;
+            int k = 5;
+            for (; k < 9; k++) {
+                if (!Character.isDigit(bankAccount.charAt(k))) {
+                    return false;
+                }
             }
-        }
-        int j = 10;
-        for (; j < 12; j++) {
-            if (!Character.isDigit(bankAccount.charAt(j))) {
-                return false;
+            int j = 10;
+            for (; j < 12; j++) {
+                if (!Character.isDigit(bankAccount.charAt(j))) {
+                    return false;
+                }
             }
-        }
-        int h = 13;
-        for (; h < bankAccount.length(); h++) {
-            if (!Character.isDigit(bankAccount.charAt(h))) {
-                return false;
+            int h = 13;
+            for (; h < bankAccount.length(); h++) {
+                if (!Character.isDigit(bankAccount.charAt(h))) {
+                    return false;
+                }
             }
-        }
-        return true;
+            return true;
         } else {
-            System.out.println("4");
             return false;
         }
     }
 
     public boolean createOwner(Integer tlfn, String bankAccount, String name, String abizena, String login, String password) {
         String x = Integer.toString(tlfn);
-        System.out.println("bankAccount: " + bankAccount);
         if (x.length() != 9) {
-            System.out.println("-0-");
             return false;
-        }  if (bankAccount.matches("^[A-Za-z]+$")) {
-            System.out.println("-1-");
+        }
+        if (bankAccount.matches("^[A-Za-z]+$")) {
             return false;
-        }  if (x.contains("-") || x.contains("+") || x.contains("/") || x.contains("*") || x.contains(".")) {
-            System.out.println("-2-");
+        }
+        if (x.contains("-") || x.contains("+") || x.contains("/") || x.contains("*") || x.contains(".")) {
             return false;
-        }  if (x.matches("^[A-Za-z]+$")) {
-            System.out.println("-3-");
+        }
+        if (x.matches("^[A-Za-z]+$")) {
             return false;
-        }  if (bankAccount.contains("-")) {
-            System.out.println("-gido-");
-            if (gidoiak(bankAccount)==false) {
-                System.out.println("----------------------------------");
+        }
+        if (bankAccount.contains("-")) {
+            if (gidoiak(bankAccount) == false) {
                 return false;
             }
-        }  if (!bankAccount.contains("-") && bankAccount.length() != 20) {
-            System.out.println("-4-");
+        }
+        if (!bankAccount.contains("-") && bankAccount.length() != 20) {
             return false;
-        }  if (!bankAccount.contains("-") && !isNumber(bankAccount)) {
-            System.out.println("-5-");
+        }
+        if (!bankAccount.contains("-") && !isNumber(bankAccount)) {
             return false;
-        } 
-            System.out.println("-ondo-");
-            Owner berria = new Owner(tlfn, bankAccount, null, name, abizena, login, password, true, new Vector<RuralHouse>());
-            db.store(berria);
-            db.commit();
-            return true;
-        
+        }
+        Owner berria = new Owner(tlfn, bankAccount, null, name, abizena, login, password, true, new Vector<RuralHouse>());
+        db.store(berria);
+        db.commit();
+        return true;
+
     }
 
     public boolean createAdmin(String login, String pass, Vector<Owner> ow, Vector<Client> cl) {
@@ -605,23 +599,59 @@ public class DataAccessCommon implements DataAccessInterface, Serializable {
 
     }
 
+    private static boolean cityTest(String city) {
+        if (city == null || city.isEmpty()) {
+            return false;
+        }
+        int i = 0;
+        for (; i < city.length(); i++) {
+            // System.out.println("(" + i + "): " + city.charAt(i));
+            if (Character.isDigit(city.charAt(i))) {
+                return false;
+            }
+            if (!city.contains("-")) {
+                if (!Character.isAlphabetic(city.charAt(i))) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
     public Vector<RuralHouse> SarchByCity(String city) {
         try {
             int i = 0;
-            RuralHouse proto = new RuralHouse(0, null, null, city);
-            ObjectSet<RuralHouse> result = db.queryByExample(proto);
-            System.out.println(city + "--> " + proto.getCity());
-            Vector<RuralHouse> ruralHouses = new Vector<RuralHouse>();
-            System.out.println(" while1 ");
-            while (result.hasNext()) {
-                System.out.println(i + " : ");
-                ruralHouses.add(result.next());
-                i++;
-            }
+            if (cityTest(city) == false) {
+                System.out.println(" TESTESTSETSETSETSET ");
+                Vector<RuralHouse> ruralHouses = new Vector<RuralHouse>();
+                return ruralHouses;
+            } else if (city.equals("all") || city.equals("All")) {
+                System.out.println("bueltatu etxe guztiak");
+                RuralHouse proto = new RuralHouse(0, null, null, null);
+                ObjectSet<RuralHouse> result = db.queryByExample(proto);
+                Vector<RuralHouse> ruralHouses = new Vector<RuralHouse>();
+                System.out.println(" while1 ");
+                while (result.hasNext()) {
+                    System.out.println(i + " : ");
+                    ruralHouses.add(result.next());
+                    i++;
+                }
 
-            return ruralHouses;
+                return ruralHouses;
+            } else {
+                RuralHouse proto = new RuralHouse(0, null, null, city);
+                ObjectSet<RuralHouse> result = db.queryByExample(proto);
+                Vector<RuralHouse> ruralHouses = new Vector<RuralHouse>();
+                System.out.println(" while1 ");
+                while (result.hasNext()) {
+                    System.out.println(i + " : ");
+                    ruralHouses.add(result.next());
+                    i++;
+                }
+
+                return ruralHouses;
+            }
         } finally {
-            System.out.println(" close ");
             // db.close();
         }
     }

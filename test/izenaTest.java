@@ -82,11 +82,13 @@ public class izenaTest extends TestCase {
             e.printStackTrace();
         }
     }
+
     //(4)  ez du karaktere (alfabetikoa) bat bera ere ez 
+
     public void testCreateGui3() throws InterruptedException {
         try {
             facade.setDataAccess(new DataAccessLocal());
-            boolean buelta = facade.createOwner(123456789, "12345678912365478910", "-", "abizena", "owner", "000");
+            boolean buelta = facade.createOwner(123456789, "12345678912365478910", "*", "abizena", "owner", "000");
             facade.close();
             assertEquals(false, buelta);
         } catch (RemoteException e) {
@@ -95,8 +97,7 @@ public class izenaTest extends TestCase {
             e.printStackTrace();
         }
     }
-    
-    
+
     //(6)  kasu proba bat hitz erreserbatuko 
     public void testCreateGui4() throws InterruptedException {
         try {
@@ -112,28 +113,27 @@ public class izenaTest extends TestCase {
             boolean buelta8 = facade.createOwner(123456789, "12345678912365478910", "this", "abizena", "owner", "000");
             boolean buelta9 = facade.createOwner(123456789, "12345678912365478910", "super", "abizena", "owner", "000");
             boolean buelta10 = facade.createOwner(123456789, "12345678912365478910", "long", "abizena", "owner", "000");
-            boolean buelta11 = facade.createOwner(123456789, "12345678912365478910", "class", "abizena", "owner", "000");           
+            boolean buelta11 = facade.createOwner(123456789, "12345678912365478910", "class", "abizena", "owner", "000");
             facade.close();
-            assertEquals(false, buelta0 );
-            assertEquals(false, buelta1 );
-            assertEquals(false, buelta2 );
-            assertEquals(false, buelta3 );
-            assertEquals(false, buelta4 );
-            assertEquals(false, buelta5 );
-            assertEquals(false, buelta6 );
-            assertEquals(false, buelta7 );
-            assertEquals(false, buelta8 );
-            assertEquals(false, buelta9 );
-            assertEquals(false, buelta10 );
-            assertEquals(false, buelta11 );
+            assertEquals(false, buelta0);
+            assertEquals(false, buelta1);
+            assertEquals(false, buelta2);
+            assertEquals(false, buelta3);
+            assertEquals(false, buelta4);
+            assertEquals(false, buelta5);
+            assertEquals(false, buelta6);
+            assertEquals(false, buelta7);
+            assertEquals(false, buelta8);
+            assertEquals(false, buelta9);
+            assertEquals(false, buelta10);
+            assertEquals(false, buelta11);
         } catch (RemoteException e) {
             e.printStackTrace();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-    
-    
+
     //(8)  karaktere kop <1
     public void testCreateGui5() throws InterruptedException {
         try {
