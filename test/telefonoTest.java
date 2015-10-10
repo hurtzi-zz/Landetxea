@@ -51,7 +51,8 @@ public class telefonoTest extends TestCase {
     /*
      * ondo daudenak--> true bueltatu
      */
-    //(1) 9 digitu  - (4) kataktere berezi gabe - (5)
+    //(1) 9 digitu  - (4) kataktere berezi gabe - (6)idetifikadorea = {integer}
+    //(8) digitu positiboak  -
     public void testCreateGui1() throws InterruptedException {
         try {
             facade.setDataAccess(new DataAccessLocal());
@@ -83,7 +84,6 @@ public class telefonoTest extends TestCase {
     }
 
     //(3) 9 digitu baino gutxiago
-
     public void testCreateGui3() throws InterruptedException {
         try {
             facade.setDataAccess(new DataAccessLocal());
@@ -97,7 +97,7 @@ public class telefonoTest extends TestCase {
         }
     }
 
-    //(5) - (7) karakter berez (gidoiak, sinboloak...)
+    //(5)karakter berez (gidoiak, sinboloak...) - (7)indetifikadorea != {integer}
     public void testCreateGui4() throws InterruptedException {
         try {
             facade.setDataAccess(new DataAccessLocal());
