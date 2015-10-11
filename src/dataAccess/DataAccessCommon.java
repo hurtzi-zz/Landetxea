@@ -127,13 +127,14 @@ public class DataAccessCommon implements DataAccessInterface, Serializable {
 
         db.commit();
     }
-
     public boolean createClient(String name, String surname, String login,
             String password, boolean isOwner) {
+            System.out.println("crete-------------- 1");
         Client c = new Client(name, surname, login, password, false,
                 new Vector<RuralHouse>());
         db.store(c);
         db.commit();
+        System.out.println("crete-------------- 2");
         return true;
     }
 
@@ -152,12 +153,10 @@ public class DataAccessCommon implements DataAccessInterface, Serializable {
 
     private static boolean gidoiak(String bankAccount) {
         if (bankAccount == null || bankAccount.isEmpty()) {
-            System.out.println("1");
             return false;
         } else if (bankAccount.length() != 23) {
             return false;
         }
-        System.out.println("4..9..12--> " + bankAccount.charAt(4) + bankAccount.charAt(9) + bankAccount.charAt(12));
         if (bankAccount.charAt(4) == '-' && bankAccount.charAt(9) == '-' && bankAccount.charAt(12) == '-') {
             int i = 0;
             for (; i < 4; i++) {

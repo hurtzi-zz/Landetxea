@@ -128,7 +128,7 @@ public class bilatzaileTest extends TestCase {
         }
     }
 
-    //(5)   latra  larrria != letra xehea
+    //(8)   latra  larrria != letra xehea
     public void testCreateGui6() throws InterruptedException {
         try {
             facade.setDataAccess(new DataAccessLocal());
@@ -164,7 +164,7 @@ public class bilatzaileTest extends TestCase {
         }
     }
 
-    //(6)  karaktere kop <1
+    //(10)  karaktere kop <1
     public void testCreateGui7() throws InterruptedException {
         try {
             facade.setDataAccess(new DataAccessLocal());

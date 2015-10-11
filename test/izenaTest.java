@@ -1,4 +1,3 @@
-
 import junit.framework.TestCase;
 import businessLogic.*;
 import domain.RuralHouse;
