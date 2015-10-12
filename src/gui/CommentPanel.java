@@ -13,13 +13,12 @@ import domain.RuralHouse;
 import domain.Comment;
 
 import java.awt.Font;
-import java.io.Serializable;
 import java.sql.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.LinkedList;
 
-public class CommentPanel extends JPanel implements Serializable{
+public class CommentPanel extends JPanel {
 
 	/**
 	 * Create the panel.
@@ -27,6 +26,9 @@ public class CommentPanel extends JPanel implements Serializable{
 	public CommentPanel(LinkedList<Comment> commentList, int ind) {
 		setLayout(null);
 		
+		System.out.println("---->"+commentList);
+		System.out.println("ind---->"+ind);
+
 
 		JLabel lblOwner = new JLabel("Data:");
 		lblOwner.setBounds(173, 11, 46, 14);

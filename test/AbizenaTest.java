@@ -17,18 +17,14 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import static junit.framework.Assert.assertEquals;
 
-/**
- *
- * @author Urtzi * TELEFONOAREN-aren proba kasuak
- *
- */
-public class izenaTest extends TestCase {
+
+public class AbizenaTest extends TestCase {
 
     public static ApplicationFacadeInterface facade;
     Register register;
 
-    public izenaTest(String testSearch) {
-        super(testSearch);
+    public AbizenaTest(String testName) {
+        super(testName);
     }
 
     @Override
@@ -37,10 +33,7 @@ public class izenaTest extends TestCase {
         super.setUp();
         facade = new FacadeImplementation();
 
-        //--register = new Register();
-        // register.addWindowListener(new WindowCloseManager());
-        // register.pack();
-        //--register.setVisible(true);
+       
     }
 
     @Override
@@ -55,7 +48,7 @@ public class izenaTest extends TestCase {
     public void testCreateGui1() throws InterruptedException {
         try {
             facade.setDataAccess(new DataAccessLocal());
-            boolean buelta = facade.createOwner(123456789, "12345678912365478910", "izena", "abizena", "owner", "000");
+            boolean buelta = facade.createOwner(123456789, "12345678912365478910", "izena", "aBizena", "owner", "000");
             facade.close();
             assertEquals(true, buelta);
         } catch (RemoteException e) {
@@ -72,7 +65,7 @@ public class izenaTest extends TestCase {
     public void testCreateGui2() throws InterruptedException {
         try {
             facade.setDataAccess(new DataAccessLocal());
-            boolean buelta = facade.createOwner(123456789, "12345678912365478910", "i2.0zena1", "abizena", "owner", "000");
+            boolean buelta = facade.createOwner(123456789, "12345678912365478910", "izena", "i2.0zena1", "owner", "000");
             facade.close();
             assertEquals(false, buelta);
         } catch (RemoteException e) {
@@ -87,7 +80,7 @@ public class izenaTest extends TestCase {
     public void testCreateGui3() throws InterruptedException {
         try {
             facade.setDataAccess(new DataAccessLocal());
-            boolean buelta = facade.createOwner(123456789, "12345678912365478910", "*", "abizena", "owner", "000");
+            boolean buelta = facade.createOwner(123456789, "12345678912365478910","izena", "*", "owner", "000");
             facade.close();
             assertEquals(false, buelta);
         } catch (RemoteException e) {
@@ -96,23 +89,21 @@ public class izenaTest extends TestCase {
             e.printStackTrace();
         }
     }
-
-    //(6)  kasu proba bat hitz erreserbatuko 
-    public void testCreateGui4() throws InterruptedException {
+public void testCreateGui4() throws InterruptedException {
         try {
             facade.setDataAccess(new DataAccessLocal());
-            boolean buelta0 = facade.createOwner(123456789, "12345678912365478910", "true", "abizena", "owner", "000");
-            boolean buelta1 = facade.createOwner(123456789, "12345678912365478910", "false", "abizena", "owner", "000");
-            boolean buelta2 = facade.createOwner(123456789, "12345678912365478910", "null", "abizena", "owner", "000");
-            boolean buelta3 = facade.createOwner(123456789, "12345678912365478910", "abstract", "abizena", "owner", "000");
-            boolean buelta4 = facade.createOwner(123456789, "12345678912365478910", "byte", "abizena", "owner", "000");
-            boolean buelta5 = facade.createOwner(123456789, "12345678912365478910", "implements", "abizena", "owner", "000");
-            boolean buelta6 = facade.createOwner(123456789, "12345678912365478910", "public", "abizena", "owner", "000");
-            boolean buelta7 = facade.createOwner(123456789, "12345678912365478910", "while", "abizena", "owner", "000");
-            boolean buelta8 = facade.createOwner(123456789, "12345678912365478910", "this", "abizena", "owner", "000");
-            boolean buelta9 = facade.createOwner(123456789, "12345678912365478910", "super", "abizena", "owner", "000");
-            boolean buelta10 = facade.createOwner(123456789, "12345678912365478910", "long", "abizena", "owner", "000");
-            boolean buelta11 = facade.createOwner(123456789, "12345678912365478910", "class", "abizena", "owner", "000");
+            boolean buelta0 = facade.createOwner(123456789, "12345678912365478910", "izena", "true", "owner", "000");
+            boolean buelta1 = facade.createOwner(123456789, "12345678912365478910", "izena", "false", "owner", "000");
+            boolean buelta2 = facade.createOwner(123456789, "12345678912365478910", "izena", "null", "owner", "000");
+            boolean buelta3 = facade.createOwner(123456789, "12345678912365478910", "izena", "abstract", "owner", "000");
+            boolean buelta4 = facade.createOwner(123456789, "12345678912365478910", "izena", "byte", "owner", "000");
+            boolean buelta5 = facade.createOwner(123456789, "12345678912365478910", "izena", "implements", "owner", "000");
+            boolean buelta6 = facade.createOwner(123456789, "12345678912365478910", "izena", "public", "owner", "000");
+            boolean buelta7 = facade.createOwner(123456789, "12345678912365478910", "izena", "while", "owner", "000");
+            boolean buelta8 = facade.createOwner(123456789, "12345678912365478910", "izena", "this", "owner", "000");
+            boolean buelta9 = facade.createOwner(123456789, "12345678912365478910", "izena", "super", "owner", "000");
+            boolean buelta10 = facade.createOwner(123456789, "12345678912365478910", "izena", "long", "owner", "000");
+            boolean buelta11 = facade.createOwner(123456789, "12345678912365478910", "izena", "class", "owner", "000");
             facade.close();
             assertEquals(false, buelta0);
             assertEquals(false, buelta1);
@@ -137,7 +128,7 @@ public class izenaTest extends TestCase {
     public void testCreateGui5() throws InterruptedException {
         try {
             facade.setDataAccess(new DataAccessLocal());
-            boolean buelta = facade.createOwner(123456789, "12345678912365478910", "", "abizena", "owner", "000");
+            boolean buelta = facade.createOwner(123456789, "12345678912365478910","abizena", "", "owner", "000");
             facade.close();
             assertEquals(false, buelta);
         } catch (RemoteException e) {
@@ -146,23 +137,10 @@ public class izenaTest extends TestCase {
             e.printStackTrace();
         }
     }
-
-    /*
-     * BESTE
-     */
-    private static void createGui(JPanel contents, String windowName) {
-        JFrame frame = new JFrame(windowName);
-        frame.getContentPane().add(contents);
-        frame.addWindowListener(new WindowCloseManager());
-        frame.pack();
-        frame.setVisible(true);
-    }
-
-    private static class WindowCloseManager extends WindowAdapter {
-
-        @Override
-        public void windowClosing(WindowEvent evt) {
-            System.exit(0);
-        }
-    }
 }
+
+
+
+     
+     
+

@@ -32,8 +32,6 @@ import domain.RuralHouse;
 import businessLogic.ApplicationFacadeInterface;
 
 public class OfertaGehitu extends JFrame implements Serializable{
-	
-	
 
 	private JPanel contentPane;
 	private JTextField textField;
@@ -50,7 +48,22 @@ public class OfertaGehitu extends JFrame implements Serializable{
 	private JCalendar jCalendar2 = new JCalendar();
 	private JLabel lblMezu = new JLabel("");
 
-
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Owner o = null;
+					OfertaGehitu frame = new OfertaGehitu(o);
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
 
 	/**
 	 * Create the frame.
@@ -58,8 +71,6 @@ public class OfertaGehitu extends JFrame implements Serializable{
 	 * @throws RemoteException 
 	 */
 	public OfertaGehitu(Owner o) throws RemoteException, Exception {
-		
-		
 		//ApplicationFacadeInterface facade=StartWindow.getBusinessLogic();
 		
 		//Vector<RuralHouse> rhs=facade.getAllRuralHouses();
@@ -192,7 +203,6 @@ public class OfertaGehitu extends JFrame implements Serializable{
 		getContentPane().add(btnOk);
 		btnOk.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 				//JComboBox comboBox = new JComboBox(o.getRuralHouses());
 				btnOk_actionPerformed(e);
 			}
@@ -224,7 +234,7 @@ public class OfertaGehitu extends JFrame implements Serializable{
 				float prezioa = Float.parseFloat(textField.getText());
 				if (prezioa == 0) {
 					lblMezu.setForeground(Color.RED);
-					lblMezu.setText("Prezioa aldatu (Prezio minimoa 1¤€)");
+					lblMezu.setText("Prezioa aldatu (Prezio minimoa 1 ¤)");
 
 				} else if (d2.before(d1)) {
 					System.out.println("Gaizki datak");
@@ -243,7 +253,6 @@ public class OfertaGehitu extends JFrame implements Serializable{
 						if (off) {
 							lblMezu.setForeground(Color.BLUE);
 							lblMezu.setText("Oferta eratu da!");
-							dispose();
 						} else {
 							lblMezu.setForeground(Color.RED);
 							lblMezu.setText("Error, try again");
@@ -281,6 +290,45 @@ public class OfertaGehitu extends JFrame implements Serializable{
 		return calendar.getTime();
 	}
 
-	
+	// private void btnOkactionPerformed(ActionEvent e)
+	// {
+	// System.out.println("dentro al principio ");
+	// //System.out.println(comboBox.getSelectedItem());
+	//
+	// RuralHouse ruralHouseizena=(RuralHouse) comboBox.getSelectedItem();
+	// System.out.println(ruralHouseizena);
+	//
+	//
+	// Date d1=trim(new Date(jCalendar1.getCalendar().getTime().getTime()));
+	//
+	//
+	// Date d2=trim(new Date(jCalendar2.getCalendar().getTime().getTime()));
+
+	/*
+	 * try { System.out.println("dentro try");
+	 * 
+	 * //It could be to trigger an exception if the introduced string is not a
+	 * number float prezioa= Float.parseFloat(textField.getText());
+	 * 
+	 * //Obtain the business logic from a StartWindow class (local or remote)
+	 * ApplicationFacadeInterface facade=MainWindow.getBusinessLogic();
+	 * 
+	 * Offer o = facade.createOffer(ruralHouse, d1, d2, prezioa);
+	 * System.out.println("despues create");
+	 * //System.out.println("Offer created: "+o.toString());
+	 * 
+	 * if (o==null){ System.out.println("dentro if");
+	 * lblMezu.setText("Bad dates or there exists an overlapping offer"); }else{
+	 * lblMezu.setText("Offer created"); }
+	 * 
+	 * } catch (java.lang.NumberFormatException e1) {
+	 * lblMezu.setText(textField.getText()+ " is not a valid price"); } catch
+	 * (OverlappingOfferExists e1) {
+	 * lblMezu.setText("There exists an overlapping offer"); } catch (BadDates
+	 * e1) { lblMezu.setText("Last day is before first day in the offer"); }
+	 * catch (Exception e1) {
+	 * 
+	 * e1.printStackTrace(); }
+	 */
 
 }

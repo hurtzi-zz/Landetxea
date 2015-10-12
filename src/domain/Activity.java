@@ -10,17 +10,26 @@ public class Activity implements Serializable{
 	private Owner owner;
 	
 	public Activity(String n, String d, int c, Boolean dn, Owner o){
-		name = n;
-		description = d;
-		cantity = c;
-		dayOrNight = dn;
-		owner = o;
+		
+		if(o != null){
+			name = n;
+			description = d;
+			cantity = c;
+			dayOrNight = dn;
+			owner = o;
+		}else {
+		}
+		
 	}
 	
-	public Activity(String n){
-		name = n;
-	}
+
 	
+	public Owner getOwner() {
+		return owner;
+	}
+
+
+
 	public String getName(){
 		return name;
 	}

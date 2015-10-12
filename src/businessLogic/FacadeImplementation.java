@@ -141,8 +141,9 @@ public class FacadeImplementation extends UnicastRemoteObject implements Applica
 
 	public boolean createClient(String Izena, String Abizena, String login,
 			String pasahitza, boolean isOwner) throws RemoteException {
-		return DataAccessCommon.getInstance().createClient(Izena, Abizena,
+		boolean q = DataAccessCommon.getInstance().createClient(Izena, Abizena,
 				login, pasahitza, true);
+		return q;
 	}
 
 	public boolean createOwner(Integer telefonoa, String bank, String Izena,
@@ -166,6 +167,26 @@ public class FacadeImplementation extends UnicastRemoteObject implements Applica
 	// }
 	public Vector<Offer> getOffers(Date firstDay, Date lastDay)
 			throws RemoteException {
+		if(firstDay == null || lastDay==null){
+			System.out.println("datarenbat null");
+			return null;
+		}
+		if(firstDay.after(lastDay)){
+			System.out.println("datak ez dira zuzenak. last day lehena  baino handiagoa izan beahr da.");
+			return null;
+		}
+		
+		Date todayDate = new Date();
+		
+		if(todayDate.after(firstDay)){
+			System.out.println("lehen eguna igaroa da");
+			return null;
+		}
+		if(todayDate.after(lastDay)){
+			System.out.println("Bigarren eguna igaroa da");
+			return null;
+		}
+		
 		return DataAccessCommon.getInstance().getOffers(firstDay, lastDay);
 	}
 
@@ -278,7 +299,25 @@ public class FacadeImplementation extends UnicastRemoteObject implements Applica
     public Boolean deleteOferta(RuralHouse rh, Offer o)throws RemoteException {
 		return DataAccessCommon.getInstance().deleteOferta(rh,o);
 	}
-    
+    public Boolean deleteActivity(Activity a, Owner o)throws RemoteException {
+    	if(o==null){
+    		System.out.println("owner null");
+    		return false;
+    	}
+    	if(a==null){
+    		System.out.println("activity null");
+    		return false;
+    	}
+    	if(a.getOwner()!=o){
+    		System.out.println("owner ezberdina");
+    		return false;
+    	}
+    if(a.getOwner().getLogin()==o.getLogin()){
+    	
+		return DataAccessCommon.getInstance().deleteActivity(a);
+}
+	return null;
+	}
     public Vector<Offer> getOffersRH(RuralHouse rh, Date firstDay, Date lastDay) throws RemoteException, Exception{
 		return DataAccessCommon.getInstance().getOffersRH(rh, firstDay, lastDay);
 	}
@@ -303,4 +342,18 @@ public class FacadeImplementation extends UnicastRemoteObject implements Applica
 	 public Vector<Owner> getOwnerss() throws RemoteException {
 			return DataAccessCommon.getInstance().getOwnerss();
 		}
+
+
+	public Activity sortuActivity (String n, String d, int c,
+			boolean dn, Owner o) throws RemoteException {
+		
+		if(o == null){
+				System.out.println("Owner-a ezin da null izan.");
+		return null;
+				
+			}else{
+				Activity ac = new Activity( n,  d,  c,  dn,  o);
+				return ac;
+			}
+	}
 }

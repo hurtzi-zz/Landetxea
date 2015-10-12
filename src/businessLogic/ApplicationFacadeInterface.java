@@ -174,9 +174,12 @@ public interface ApplicationFacadeInterface extends Remote, Serializable {
 
 	public Boolean deleteClient(Client o) throws RemoteException;
 	
+	public Boolean deleteActivity(Activity a, Owner o)throws RemoteException;
 	
 	public Vector<Client>  getClient() throws RemoteException;
 	
 	public Vector<Owner>  getOwnerss() throws RemoteException;
+
+	public Activity sortuActivity (String string, String string2, int i, boolean b, Owner o) throws RemoteException ;
 
 }

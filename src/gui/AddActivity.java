@@ -30,7 +30,7 @@ public class AddActivity extends JPanel implements Serializable{
 	private RuralHouse ruralhouse;
 	
 	private JLabel lblOharrak = new JLabel("");
-	private JComboBox<ComboItem> comboBox = new JComboBox<ComboItem>();
+	private JComboBox comboBox = new JComboBox();
 	private JButton btnGehitu = new JButton("GEHITU");
 
 
@@ -94,7 +94,6 @@ public class AddActivity extends JPanel implements Serializable{
 		
 		comboBox.setBounds(160, 200, 150, 25);
 		add(comboBox);
-		comboBox.setVisible(false);
 		try{
 			Vector<Activity> ownList = StartWindow.facadeInterface.getOwnerActivities(owner);
 			if (ownList == null || ownList.isEmpty()){
@@ -109,7 +108,6 @@ public class AddActivity extends JPanel implements Serializable{
 					aTest = it.next();
 					if (!houseList.contains(aTest)){
 						comboBox.addItem(new ComboItem(aTest.getName(), aTest));
-						comboBox.setVisible(true);
 					}
 				}
 			}
@@ -133,6 +131,9 @@ public class AddActivity extends JPanel implements Serializable{
 						Activity act = ((ComboItem)item).getValue();
 						System.out.println("bai");
 						Boolean isOk = StartWindow.facadeInterface.addActivity(act, ruralhouse);
+						if(ruralhouse.getOwner()!= owner){
+							System.out.println("landetxe jardueraren owner-a eta sortzailea ez datoz bat");
+						}else{
 						if(isOk){
 							lblOharrak.setText("Ekitaldia ondo gehitu da da!");
 							lblOharrak.setForeground(Color.GREEN);
@@ -143,6 +144,7 @@ public class AddActivity extends JPanel implements Serializable{
 							lblOharrak.setForeground(Color.RED);
 							lblOharrak.setVisible(true);
 						}
+					}
 					}
 				} catch (RemoteException e){
 				e.printStackTrace();
