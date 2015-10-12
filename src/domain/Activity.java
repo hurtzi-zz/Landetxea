@@ -24,6 +24,12 @@ public class Activity implements Serializable{
 	
 
 	
+	public Activity(String izena) {
+		// TODO Auto-generated constructor stub
+	}
+
+
+
 	public Owner getOwner() {
 		return owner;
 	}

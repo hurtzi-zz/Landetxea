@@ -105,6 +105,64 @@ public class AddRuralHouse extends JPanel implements Serializable{
 				if (!textDeskribapena.getText().equals("")
 						&& !textHiria.getText().equals("")) {
 					System.out.println("bai");
+//					try {
+//
+//						int n1 = Integer.parseInt(textZenbakia.getText());
+//						Boolean hasNumber = false;
+//						//System.out.println(owner.getRuralHouses()+" laaa");
+//						System.out.println(owner.getRuralHouses());
+//						Vector<RuralHouse> vec = owner.getRuralHouses();
+//						if(vec==null){
+//							vec = new Vector<RuralHouse>();
+//						}
+//						Iterator it = vec.iterator();
+//						while (it.hasNext()) {
+//							RuralHouse rh = (RuralHouse) it.next();
+//							int n2 = rh.getHouseNumber();
+//							if (n1 == n2) {
+//								hasNumber = true;
+//							}
+//						}
+//						if (hasNumber == true) {
+//							lblOharrak.setText("Zenbaki hori hartuta dago.");
+//							lblOharrak.setForeground(Color.RED);
+//							lblOharrak.setVisible(true);
+//						} else {
+//
+//							Owner ownerToSet = owner;
+//							String d= textDeskribapena.getText();
+//							String h=textHiria.getText();
+//							Integer z = Integer.valueOf(textZenbakia.getText());
+//							
+////									ownerToSet.addRuralHouse(Integer.parseInt()............
+////									facade.updateOwner(owner, ownerToSet);
+//							ApplicationFacadeInterface facades = StartWindow.getBusinessLogic();
+//			            	Boolean gordeta=facades.saveRuralHouse(z,h,d);
+//			            	if(gordeta==true){
+//			            		lblOharrak.setText("Your Ruralhouse have ben saved");
+//								lblOharrak.setForeground(Color.GREEN);
+//			            	}else{
+//			            		lblOharrak.setText("Your Ruralhouse hasent been saved");
+//								lblOharrak.setForeground(Color.RED);
+//			            	}
+//
+//							owner = ownerToSet;
+//							lblOharrak.setText("Landetxea gehitu da.");
+//							lblOharrak.setForeground(Color.GREEN);
+//							lblOharrak.setVisible(true);
+//						}
+//					} catch (java.lang.NumberFormatException e) {
+//						lblOharrak.setText("Baliozko zenbakia idatzi!");
+//						lblOharrak.setForeground(Color.RED);
+//						lblOharrak.setVisible(true);
+//
+//					} catch (Exception ex) {
+//						ex.printStackTrace();
+//					}
+					
+//					Integer zb = new Integer(textZenbakia.getText());
+					//RuralHouse gorde = new RuralHouse(zb, owner, textDeskribapena.getText(), textHiria.getText());
+				//	System.out.println(gorde);
 					try {
 						System.out.println(owner.getLogin()+"Hau da logina");
 				//		Vector<RuralHouse> rr = StartWindow.facadeInterface.ownerBektoreaBueltatu(owner.getLogin());

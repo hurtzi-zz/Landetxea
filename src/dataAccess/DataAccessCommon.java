@@ -365,7 +365,26 @@ public class DataAccessCommon implements DataAccessInterface, Serializable {
             return false;
         }
     }
+  public Boolean deleteClient(Client o) {
+        Client galderaO = new Client(null, null, o.getLogin(), null, null, null);
 
+        try {
+            ObjectContainer db = DataAccessCommon.getContainer();
+            ObjectSet resultO = db.queryByExample(galderaO);
+
+            if (resultO.hasNext()) {
+                Client originalOwner = (Client) resultO.next();
+                db.delete(originalOwner);
+                db.commit();
+
+            }
+            return true;
+
+        } catch (Exception exc) {
+            exc.printStackTrace();
+            return false;
+        }
+    }
     public boolean saveOffer(RuralHouse rh, Date d1, Date d2, Float prezioa) {
         // db.delete(rh);
         // db.commit();
@@ -1045,13 +1064,7 @@ public class DataAccessCommon implements DataAccessInterface, Serializable {
         return true;
     }
 
-    public Boolean deleteClient(Client o) {
-        System.out.println("deldeldeldeldleleledld----------------->");
-        db.delete(o);
-        db.commit();
-        return true;
 
-    }
 
     public Boolean deleteClient2(Client o) {
         Client galderaO = new Client(null, null, o.getLogin(), null, null, null);
@@ -1103,7 +1116,7 @@ public class DataAccessCommon implements DataAccessInterface, Serializable {
             Boolean egunez, Owner owner) {
         try {
             ObjectContainer db = DataAccessCommon.getContainer();
-            Activity galdera = new Activity(izena);
+            Activity galdera = new Activity(izena,deskribapena,kop,egunez,owner);
             ObjectSet result = db.queryByExample(galdera);
             if (result.hasNext()) {
                 return false;
@@ -1159,7 +1172,7 @@ public class DataAccessCommon implements DataAccessInterface, Serializable {
             throws RemoteException, Exception {
         RuralHouse rhGaldera = new RuralHouse(rh.getHouseNumber(), null, null,
                 null);
-        Activity aGaldera = new Activity(a.getName());
+        Activity aGaldera = a;
         ObjectContainer db = DataAccessCommon.getContainer();
         ObjectSet rhResult = db.queryByExample(rhGaldera);
         ObjectSet aResult = db.queryByExample(aGaldera);
@@ -1329,4 +1342,30 @@ public class DataAccessCommon implements DataAccessInterface, Serializable {
         }
     }
 
+    public Boolean deleteActivity(Activity a) {
+		Activity galdera = a;
+		try {
+			
+			
+			
+			
+			ObjectContainer db = DataAccessCommon.getContainer();
+			ObjectSet result = db.queryByExample(galdera);
+			System.out.println(result.size());
+		if(result.size()>0){
+				Activity c = (Activity) result.get(0);
+				db.delete(c);
+				db.commit();
+				return true;
+			} else {
+				return false;
+			}
+		} catch (Exception exc) {
+			exc.printStackTrace();
+			return null;
+		}	}
+
+
 }
+
+

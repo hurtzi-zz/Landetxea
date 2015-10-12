@@ -1,4 +1,3 @@
-package Tests;
 
 import businessLogic.ApplicationFacadeInterface;
 import businessLogic.FacadeImplementation;

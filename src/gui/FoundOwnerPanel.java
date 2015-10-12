@@ -52,11 +52,11 @@ public class FoundOwnerPanel extends JPanel implements Serializable{
 		izena.setText(h.get(ind).getName());
 
 		JLabel lblRural = new JLabel("Izena:");
-		lblRural.setBounds(10, 11, 36, 14);
+		lblRural.setBounds(10, 11, 110, 14);
 		add(lblRural);
 
 		JLabel abizen = new JLabel("");
-		abizen.setBounds(88, 41, 55, 14);
+		abizen.setBounds(92, 11, 29, 14);
 		add(abizen);
 		abizen.setText(h.get(ind).getAbizena());
 
@@ -64,8 +64,12 @@ public class FoundOwnerPanel extends JPanel implements Serializable{
 		label.setBounds(10, 36, 93, 14);
 		add(label);
 
+		JLabel lblPrice = new JLabel("Login:");
+		lblPrice.setBounds(10, 86, 85, 14);
+		add(lblPrice);
+
 		JLabel searchPrice = new JLabel("");
-		searchPrice.setBounds(88, 7, 68, 23);
+		searchPrice.setBounds(233, 57, 68, 23);
 		add(searchPrice);
 		searchPrice.setBackground(Color.WHITE);
 		searchPrice.setText(h.get(ind).getLogin());
@@ -79,7 +83,7 @@ public class FoundOwnerPanel extends JPanel implements Serializable{
 		add(lblFD);
 		
 		JLabel lblfir = new JLabel("");
-		lblfir.setBounds(88, 111, 119, 14);
+		lblfir.setBounds(179, 129, 119, 14);
 		add(lblfir);
 		lblfir.setBackground(Color.WHITE);
 		lblfir.setText(h.get(ind).getBankAccount());
